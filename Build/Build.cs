@@ -243,7 +243,8 @@ class Build : NukeBuild
             CoverallsNet(s => s
                 .SetDryRun(IsLocalBuild)
                 .SetProcessArgumentConfigurator(x => x
-                    .Add("--lcov"))
+                    .Add("--lcov")
+                    .Add($"--jobId {GitHubActions?.RunId}"))
                 .SetInput(CoverageResultDirectory / "lcov.info")
                 .SetRepoToken(CoverallsToken)
                 .When(IsPullRequest,

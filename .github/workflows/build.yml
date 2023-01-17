@@ -9,8 +9,14 @@ jobs:
 
     env:
       DOTNET_NOLOGO: true
+      WEBHOOK_TOKEN: ${{ vars.COVERALLS }}
 
     steps:
+    - name: Add mask
+      id: mask
+      run: |
+        echo "::set-output name=coveralls, add-mask=true::${{ vars.COVERALLS }}"
+
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -27,7 +33,8 @@ jobs:
     - name: Run NUKE
       run: ./build.ps1
       env:
-        ApiKey: ${{ secrets.NUGETAPIKEY }}
+        NuGetApiKey: ${{ secrets.NUGETAPIKEY }}
+        CoverallsToken: $WEBHOOK_TOKEN
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
