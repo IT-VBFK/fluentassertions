@@ -14,7 +14,7 @@ jobs:
     - name: Add mask
       id: mask
       run: |
-        echo "::set-output name=coveralls, add-mask=true::${{ vars.COVERALLS }}"
+        echo "::add-mask::${{ vars.COVERALLS }}"
 
     - uses: actions/checkout@v3
       with:
@@ -33,7 +33,7 @@ jobs:
       run: ./build.ps1
       env:
         NuGetApiKey: ${{ secrets.NUGETAPIKEY }}
-        CoverallsToken: ${{ steps.mask.outputs.coveralls }}
+        CoverallsToken: ${{ vars.COVERALLS }}
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
