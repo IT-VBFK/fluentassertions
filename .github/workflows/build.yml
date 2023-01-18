@@ -9,7 +9,6 @@ jobs:
 
     env:
       DOTNET_NOLOGO: true
-      WEBHOOK_TOKEN: ${{ vars.COVERALLS }}
 
     steps:
     - name: Add mask
@@ -34,7 +33,7 @@ jobs:
       run: ./build.ps1
       env:
         NuGetApiKey: ${{ secrets.NUGETAPIKEY }}
-        CoverallsToken: $WEBHOOK_TOKEN
+        CoverallsToken: ${{ steps.mask.outputs.coveralls }}
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
