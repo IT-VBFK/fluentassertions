@@ -7,7 +7,7 @@ branches:
     mode: ContinuousDeployment
     regex: '(pull|pull\-requests|pr)[\/-]'
     label: 'pr'
-    label-number-pattern: '[/-]?(?<number>\d+)[-/]'
+    label-number-pattern: '[\/-]?(?<number>\d+)[-\/]'
     prevent-increment:
       of-merged-branch: false
 ignore:
