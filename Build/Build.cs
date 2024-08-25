@@ -86,6 +86,8 @@ class Build : NukeBuild
         {
             SemVer = GitVersion.SemVer;
 
+            Information($"SemVer before: {SemVer}");
+
             if (IsPullRequest)
             {
                 Information(
