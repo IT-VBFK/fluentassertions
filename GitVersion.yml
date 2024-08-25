@@ -4,7 +4,7 @@ branches:
     regex: releases?[/-]
     label: rc
   pull-request:
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     regex: '(pull|pull\-requests|pr)[\/-]'
     label: 'pr'
     label-number-pattern: '[\/-]?(?<number>\d+)[-\/]'
