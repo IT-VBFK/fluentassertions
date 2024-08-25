@@ -1,13 +1,15 @@
-next-version: 7.0
+next-version: 7.0.0
 branches:
   release:
     regex: releases?[/-]
-    tag: rc
+    label: rc
   pull-request:
-    mode: ContinuousDeployment
-    regex: ((pull|pull\-requests|pr)[/-]|[/-](merge))
-    tag: pr
-    tag-number-pattern: '[/-]?(?<number>\d+)'
-    prevent-increment-of-merged-branch-version: false
+    mode: ContinuousDelivery
+    regex: ^(pull|pull\-requests|pr)[/-]
+    label: pr
+    increment: Inherit
+    label-number-pattern: '[/-](?<number>\d+)'
+    prevent-increment:
+      of-merged-branch: false
 ignore:
   sha: []

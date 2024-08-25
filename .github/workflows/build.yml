@@ -31,7 +31,7 @@ jobs:
         key: ${{ runner.os }}-${{ hashFiles('NodeVersion') }}
 
     - name: Run NUKE
-      run: ./build.ps1
+      run: ./build.ps1 CalculateNugetVersion
       env:
         NuGetApiKey: ${{ secrets.NUGETAPIKEY }}
 
